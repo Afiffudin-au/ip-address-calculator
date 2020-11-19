@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+    }
+    .stepCalculate,.calculation{
+      max-width: 600px;
+    }
+    .calculation_text{
+      background: #1976d2;
+      font-size: 20px;
+      font-weight: 500;
+      color: white;
+    }
+    .calculateResult p{
+      background: #1976d2;
+      font-size: 20px;
+      font-weight: 500;
+      color: white;
+      padding: 10px;
+    }
+    .inputBox{
+      display: flex;
+      flex-direction: column;
+      padding: 5px;
+      width: 320px;
+    }
+    .inputBox input{
+      width: 93%;
+      padding: 10px;
+      border: none;
+      outline: none;
+      font-size: 16px;
+      border: 1px solid #1976d2;
+    }
+    p{
+      margin-bottom: 2px;
+    }
+    .inputBox button{
+      padding: 10px;
+      margin-top: 5px;
+    }
+    .calculation,.stepCalculate,.desc,.timeExecution{
+      padding: 5px;
+    }
+    .calculation .note{
+      background-color: #e53935;
+      padding: 5px;
+      color: white;
+      font-weight: 500;
+      max-width: max-content;
+    }
+    .footer{
+      background-color: black;
+    }
+    .footer p{
+      text-align: center;
+      color: white;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="inputBox">
+    <input class="inputIp" type='text' placeholder="IP">
+    <span>/</span>
+    <input class="inputSubnet" type='number' placeholder="subnet class B/C 16-32">
+    <button class="calculate">Calculate</button>
+  </div>
+  <div class='timeExecution'>
+
+  </div>
+  <div class='desc'>
+
+  </div>
+  <div class="stepCalculate">
+    <div class='calculation_text_box'>
+      <p class="calculation_text"></p>
+      <p class="calculation_text"></p>
+      <p class="calculation_text"></p>
+      <p class="calculation_text"></p>
+      <p class="calculation_text"></p>
+      <p class="calculation_text"></p>
+      <p class="calculation_text"></p>
+      <p class="calculation_text"></p>
+      <p class="calculation_text"></p>
+      <p class="calculation_text"></p>
+      <p class="calculation_text"></p>
+      <p class="calculation_text"></p>
+    </div>
+  </div>
+  <div class='desc'>
+
+  </div>
+  <div class="calculation">
+    <div class="calculateResult">
+    </div>
+  </div>
+  <div class="footer">
+    <p>Fast Subnetting Made By Afiff's ❤</p>
+  </div>
+  <script src="IP.js"></script>
+</body>
+</html>
