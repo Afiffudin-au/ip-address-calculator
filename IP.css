@@ -1,0 +1,46 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.container{
+  place-items: center;
+  display: grid;
+  padding: 5px;
+}
+.inputBox{
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  width: 320px;
+}
+.inputBox input{
+  width: 100%;
+  padding: 10px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  border: 1px solid #1976d2;
+}
+.inputBox button{
+  padding: 10px;
+  margin-top: 5px;
+}
+.stepCalculate,.calculation{
+  text-transform: lowercase;
+  max-width: 600px;
+  font-family: monospace;
+  margin-bottom: 5px;
+  background-color: #1976d2;
+}
+.calculation_text{
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+}
+.calculateResult p{
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+  padding: 10px;
+}

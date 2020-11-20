@@ -11,6 +11,28 @@ const ClassIP = {
   __31 : 2,
   __32 : 1,
 }
+function ipAddrToBinary(ipAddr){
+  let array = []
+  let binary = []
+  const afterSplit = ipAddr.split('.')
+  array = afterSplit
+  array.forEach((element,i)=>{
+    ipAddrInt = parseInt(element)
+    binary[i] = ipAddrInt.toString(2)
+  })
+  return binary.join('.')
+}
+function netMaskToBinary(netmask){
+  let array = []
+  let binary = []
+  const afterSplit = netmask.split('.')
+  array = afterSplit
+  array.forEach((element,i)=>{
+    netmaskInt = parseInt(element)
+    binary[i] = netmaskInt.toString(2)
+  })
+  return binary.join('.')
+}
 function calculate(ip,prefix){
   let start = window.performance.now();
   let firstIPArray = null
@@ -30,7 +52,7 @@ function calculate(ip,prefix){
     )
     desc.innerHTML = (content)
     calculation_text.forEach(e=>{
-      e.style.padding = '10px'
+      e.style.padding = '5px'
     })
     calculation_text[0].innerHTML = (`Calculate IP : ${selectArray} / ${ClassIP[`__${prefix}`]} = ${Math.floor(selectArray / ClassIP[`__${prefix}`])} * ${ClassIP[`__${prefix}`]} = ${Math.floor(selectArray / ClassIP[`__${prefix}`]) * ClassIP[`__${prefix}`]}`)
     const firstIP = Math.floor(selectArray / ClassIP[`__${prefix}`]) * ClassIP[`__${prefix}`]
@@ -52,23 +74,27 @@ function calculate(ip,prefix){
     calculation_text[6].innerHTML = (`Subnet calculate : 256 - ${ClassIP[`__${prefix}`]} = ${256 - ClassIP[`__${prefix}`]}`)
     calculation_text[7].innerHTML = ('Subnet result : 255.255.255.' + subnetMask)
     const copyArray3 = [...firstIPArray]
-    copyArray3[3] = firstIP + 1
+    copyArray3[3] = copyArray3[3] + 1
     usableHostIpRange.first = copyArray3
     const copyArray4 = [...lastIPArray]
-    copyArray4[3] = lastIP - 1
+    copyArray4[3] = copyArray4[3] - 1
     usableHostIpRange.last = copyArray4
     calculation_text[8].innerHTML = ('RANGE IP : ' + firstIPArray.join('.') + ' - ' + lastIPArray.join('.'))
     calculation_text[9].innerHTML = ('VALID HOST (Network ID + 1 ~ BROADCAST - 1): ' + usableHostIpRange.first.join('.') + ' - ' + usableHostIpRange.last.join('.'))
+    calculation_text[10].innerHTML = (`Valid Host : ${(ClassIP[`__${prefix}`])} - 2 = ${(ClassIP[`__${prefix}`] - 2)}`)
     const results = (
       `<div>
       <h3>Hasil</h3>
         <p>${('IP ADDRESS  : ' + ip)}</p>
-        <p>${('NETWORK ID   : ' + firstIPArray.join('.'))}</p>
+        <p>${('IP ADDRESS BINARY : ' + ipAddrToBinary(ip))}</p>
         <p>${('RANGE IP  : ' + firstIPArray.join('.') + ' - ' + lastIPArray.join('.'))}</p>
         <p>${('VALID HOST : ' + usableHostIpRange.first.join('.') + ' - ' + usableHostIpRange.last.join('.'))}</p>
+        <p>${('NETWORK ID   : ' + firstIPArray.join('.'))}</p>
         <p>${('BROADCAST : ' + lastIPArray.join('.'))}</p>
         <p>${('SUBNETMASK : 255.255.255.' + subnetMask)}</p>
-        <p>${('TOTAL IP : ' + ClassIP[`__${prefix}`])}</p>
+        <p>${('SUBNET MASK BINARY : ' + netMaskToBinary(`255.255.255.${subnetMask}`))}</p>
+        <p>${('Hosts: : ' + ClassIP[`__${prefix}`])}</p>
+        <p>${('Valid Hosts : ' + (ClassIP[`__${prefix}`] - 2))}</p>
       </div>`
     )
     calculateResult.innerHTML = results
@@ -83,7 +109,7 @@ function calculate(ip,prefix){
       desc.innerHTML = (content)
       desc.innerHTML = (content)
     calculation_text.forEach(e=>{
-      e.style.padding = '10px'
+      e.style.padding = '5px'
     })
     prefixInt = parseInt(prefix)
     const imaginer = parseInt(prefixInt + 8)
@@ -118,15 +144,20 @@ function calculate(ip,prefix){
     usableHostIpRange.last = copyArray4
     calculation_text[10].innerHTML = ('RANGE IP : ' + firstIPArray.join('.') + ' - ' + lastIPArray.join('.'))
     calculation_text[11].innerHTML = ('VALID HOST (Network ID + 1 ~ BROADCAST - 1): ' + usableHostIpRange.first.join('.') + ' - ' + usableHostIpRange.last.join('.'))
+    calculation_text[12].innerHTML = (`Valid Host : ${(totalIP)} - 2 = ${(totalIP - 2)}`)
     const results = (
       `<div>
         <h3>Hasil</h3>
         <p>${('IP ADDRESS : ' + ip)}</p>
-        <p>${('RANGE IP : ' + firstIPArray.join('.') + " - " + lastIPArray.join('.'))}</p>
-        <p>${('VALID HOST (Network ID + 1 ~ BROADCAST - 1): ' + usableHostIpRange.first.join('.') + ' - ' + usableHostIpRange.last.join('.'))}</p>
-        <p>${('NETWORK ID  : ' + firstIPArray.join('.'))}</p>
+        <p>${('IP ADDRESS BINARY : ' + ipAddrToBinary(ip))}</p>
+        <p>${('RANGE IP   : ' + firstIPArray.join('.') + " - " + lastIPArray.join('.'))}</p>
+        <p>${('VALID HOST : ' + usableHostIpRange.first.join('.') + ' - ' + usableHostIpRange.last.join('.'))}</p>
+        <p>${('NETWORK ID : ' + firstIPArray.join('.'))}</p>
         <p>${('BROADCAST  : '+ lastIPArray.join('.'))}</p>
         <p>${('SUBNET MASK : 255.255.' + subnetMask + '.0')}</p>
+        <p>${('SUBNET MASK BINARY : ' + netMaskToBinary(`255.255.${subnetMask}.0`))}</p>
+        <p>${('Hosts: : ' + totalIP)}</p>
+        <p>${('Valid Hosts : ' + (totalIP - 2))}</p>
       </div>`
     )
     calculateResult.innerHTML = results
