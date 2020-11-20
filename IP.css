@@ -3,11 +3,6 @@
   margin: 0;
   box-sizing: border-box;
 }
-.container{
-  place-items: center;
-  display: grid;
-  padding: 5px;
-}
 .inputBox{
   display: flex;
   flex-direction: column;
