@@ -7,7 +7,6 @@ const calculation_texts = document.querySelectorAll('.calculation_text')
 const desc = document.querySelector('.desc')
 const timeExecution = document.querySelector('.timeExecution')
 const beforeCalculations = document.querySelectorAll('.beforeCalculation')
-const erorrMesseage = document.querySelector('.erorrMesseage')
 const regex = '^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$'
 let valueIp = ''
 let valueSubnet = ''

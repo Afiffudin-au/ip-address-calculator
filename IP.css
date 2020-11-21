@@ -9,7 +9,6 @@
 .inputBox{
   display: flex;
   flex-direction: column;
-  padding: 5px;
   width: 320px;
 }
 .inputBox input{
@@ -24,8 +23,8 @@
   padding: 10px;
   margin-top: 5px;
 }
-.erorrMesseage{
-  color: rgb(235, 69, 69);
+.note{
+  color: rgb(241, 44, 44);
 }
 .beforeCalculations{
   font-family: monospace;
