@@ -1,3 +1,11 @@
+const inputIP = document.querySelector('.inputIp')
+const inputSubnet = document.querySelector('.inputSubnet')
+const calculateIp = document.querySelector('.calculate')
+const calculateResult = document.querySelector('.calculateResult')
+const calculation = document.querySelector('.calculation')
+const calculation_text = document.querySelectorAll('.calculation_text')
+const desc = document.querySelector('.desc')
+const timeExecution = document.querySelector('.timeExecution')
 let valueIp = ''
 let valueSubnet = ''
 const ClassIP = {
@@ -203,14 +211,6 @@ function handleCalculate(){
   }
   calculate(valueIp,valueSubnet)
 }
-const inputIP = document.querySelector('.inputIp')
-const inputSubnet = document.querySelector('.inputSubnet')
-const calculateIp = document.querySelector('.calculate')
 inputIP.addEventListener('input',handleInput)
 inputSubnet.addEventListener('input',handleInputSubnet)
 calculateIp.addEventListener('click',handleCalculate)
-const calculateResult = document.querySelector('.calculateResult')
-const calculation = document.querySelector('.calculation')
-const calculation_text = document.querySelectorAll('.calculation_text')
-const desc = document.querySelector('.desc')
-const timeExecution = document.querySelector('.timeExecution')
