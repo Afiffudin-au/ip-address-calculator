@@ -252,7 +252,6 @@ function validation(valueIp){
   if(valueIp.match(regex)===null){
     return true
   }else{
-    erorrMesseage.innerHTML = ''
     return false
   }
 }
