@@ -21,21 +21,22 @@
   padding: 10px;
   margin-top: 5px;
 }
-.stepCalculate,.calculation{
-  text-transform: lowercase;
-  max-width: 600px;
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  text-transform: capitalize;
   font-family: monospace;
-  margin-bottom: 5px;
-  background-color: #1976d2;
-}
-.calculation_text{
   font-size: 16px;
-  font-weight: 500;
-  color: white;
 }
-.calculateResult p{
-  font-size: 16px;
-  font-weight: 500;
-  color: white;
-  padding: 10px;
+.stepCalculate{
+  margin-bottom: 15px;
+}
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
 }
