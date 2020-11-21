@@ -18,10 +18,10 @@
   outline: none;
   font-size: 16px;
   border: 1px solid #1976d2;
+  margin-bottom: 5px;
 }
 .inputBox button{
   padding: 10px;
-  margin-top: 5px;
 }
 .note{
   color: rgb(241, 44, 44);

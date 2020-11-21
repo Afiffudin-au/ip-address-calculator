@@ -248,8 +248,8 @@ function validation(valueIp){
   })
   calculateResult.innerHTML = ''
   desc.innerHTML = ''
-  console.log("bresih bersih")
-  if(valueIp.match(regex)===null){
+  if(valueIp.match(regex)=== null || valueSubnet === ''){
+    console.log("bingong")
     return true
   }else{
     return false
@@ -257,7 +257,7 @@ function validation(valueIp){
 }
 function handleInput(e) {
   valueIp = e.target.value
-  if(validation(valueIp) === true){
+  if(validation(valueIp,valueSubnet) === true){
     return
   }
   calculate(valueIp, valueSubnet)
