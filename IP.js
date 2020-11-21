@@ -55,7 +55,9 @@ function calculate(ip, prefix) {
   const afterSplit = ip.split('.')
   const selectArray = parseInt(afterSplit[afterSplit.length - 1])
   const selectArray2 = parseInt(afterSplit[afterSplit.length - 2])
-  if (prefix >= 24 && prefix <= 32) {
+  const classC = prefix >= 24 && prefix <= 32
+  const classB = prefix >= 16 && prefix <= 23
+  if (classC && afterSplit[3] !== undefined) {
     const content = (
       `<h3>Cara Perhitungan</h3>
       <p class="note">Note : Cara perhitungan dibawah diambil dari proses perhitungan dibalik layar </p>`
@@ -144,7 +146,7 @@ function calculate(ip, prefix) {
     let end = window.performance.now();
     timeExecution.innerHTML = `Execution time: ${Math.floor(end - start)} ms`
   }
-  if (prefix >= 16 && prefix <= 23) {
+  if(classB && afterSplit[2] !== undefined) {
     const content = (
       `<h3>Cara Perhitungan</h3>
         <p class="note">Note : Cara perhitungan dibawah diambil dari proses perhitungan dibalik layar </p>`
@@ -249,7 +251,6 @@ function validation(valueIp){
   calculateResult.innerHTML = ''
   desc.innerHTML = ''
   if(valueIp.match(regex)=== null || valueSubnet === ''){
-    console.log("bingong")
     return true
   }else{
     return false
@@ -271,6 +272,7 @@ function handleInputSubnet(e) {
 }
 function handleCalculate() {
   if(validation(valueIp,valueSubnet) === true){
+    alert("IP TIDAK VALID!!!")
     return
   }
   calculate(valueIp, valueSubnet)
