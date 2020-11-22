@@ -60,6 +60,7 @@ function calculate(ip, prefix) {
   const classC = prefix >= 24 && prefix <= 32
   const classB = prefix >= 16 && prefix <= 23
   const classA = prefix >= 8 && prefix <= 15
+  console.log(typeof prefix,typeof ip)
   const content = (
     `
     <p class="note">Note : Cara perhitungan dibawah diambil dari proses perhitungan dibalik layar(Menggunakan Cara Baru) </p>`

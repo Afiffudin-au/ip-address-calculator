@@ -3,6 +3,7 @@
   margin: 0;
   box-sizing: border-box;
 }
+
 .container{
   padding: 5px;
 }
@@ -38,16 +39,19 @@ table {
   font-family: monospace;
   font-size: 16px;
   width: 100%;
+  color: white;
 }
 .stepCalculate{
   margin-bottom: 15px;
 }
 td, th {
-  border: 1px solid #dddddd;
+  border: 1px solid #607d8b;
   text-align: left;
   padding: 8px;
 }
-
+tr{
+  background-color: #37474f;
+}
 tr:nth-child(even) {
-  background-color: #dddddd;
+  background-color: #263238;
 }
