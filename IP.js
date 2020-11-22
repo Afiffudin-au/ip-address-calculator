@@ -28,7 +28,7 @@ function ipAddrToBinary(ipAddr) {
   const afterSplit = ipAddr.split('.')
   array = afterSplit
   array.forEach((element, i) => {
-    ipAddrInt = parseInt(element)
+    const ipAddrInt = parseInt(element)
     binary[i] = ipAddrInt.toString(2)
   })
   return binary.join('.')
@@ -39,7 +39,7 @@ function netMaskToBinary(netmask) {
   const afterSplit = netmask.split('.')
   array = afterSplit
   array.forEach((element, i) => {
-    netmaskInt = parseInt(element)
+    const netmaskInt = parseInt(element)
     binary[i] = netmaskInt.toString(2)
   })
   return binary.join('.')
@@ -148,7 +148,7 @@ function calculate(ip, prefix) {
     timeExecution.innerHTML = `Execution time: ${Math.floor(end - start)} ms`
   } else if (classB && afterSplit[2] !== undefined) {
     desc.innerHTML = (content)
-    prefixInt = parseInt(prefix)
+    const prefixInt = parseInt(prefix)
     const imaginer = parseInt(prefixInt + 8)
     beforeCalculations.innerHTML += (`<p>Imaginer Prefix ${prefix} = ${imaginer} = ${ClassIP[`__${imaginer}`]} IP</p>`)
     beforeCalculations.innerHTML += (`<p>3rd Octet = ${afterSplit[2]}</p>`)
@@ -320,7 +320,7 @@ function calculate(ip, prefix) {
     timeExecution.innerHTML = `Execution time: ${Math.floor(end - start)} ms`
   }
 }
-function validation(valueIp) {
+function validation(valueIp,valueSubnet) {
   beforeCalculations.innerHTML = ''
   stepCalculate.innerHTML = ''
   calculateResult.innerHTML = ''
