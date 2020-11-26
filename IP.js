@@ -9,6 +9,8 @@ const beforeCalculations = document.querySelector('.beforeCalculations')
 const stepCalculate = document.querySelector('.stepCalculate')
 const regex = '^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$'
 const regexBinary = '([^0-9]|^)1234([^0-9]|$)'
+const calculatorKeys = document.querySelector('.calculator-keys')
+const inputBox = document.querySelector('.inputBox')
 let valueIp = ''
 let valueSubnet = ''
 const ClassIP = {
@@ -60,7 +62,6 @@ function calculate(ip, prefix) {
   const classC = prefix >= 24 && prefix <= 32
   const classB = prefix >= 16 && prefix <= 23
   const classA = prefix >= 8 && prefix <= 15
-  console.log(typeof prefix,typeof ip)
   const content = (
     `
     <p class="note">Note : Cara perhitungan dibawah diambil dari proses perhitungan dibalik layar(Menggunakan Cara Baru) </p>`
@@ -351,8 +352,48 @@ function handleCalculate() {
     alert("IP/SUBNET TIDAK VALID!!!")
     return
   }
+  if(valueSubnet < 8 || valueSubnet > 32){
+    alert("Not Support Prefix : " + valueSubnet)
+  }
   calculate(valueIp, valueSubnet)
+}
+let valueIpActive = false
+let valueSubnetActive = false
+function handleKey(e){
+  if(e.target.value === undefined) return
+  if(valueIpActive === true){
+    valueIp += e.target.value
+    inputIP.value = valueIp
+    if (validation(valueIp, valueSubnet) === true) {
+      return
+    }
+    calculate(valueIp, valueSubnet)
+  }
+  if(valueSubnetActive === true){
+    valueSubnet += e.target.value
+    inputSubnet.value = valueSubnet
+    if (validation(valueIp, valueSubnet) === true) {
+      return
+    }
+    calculate(valueIp, valueSubnet)
+  }
+}
+function handleInputCheck(e){
+  if(e.target.classList.contains('inputIp')){
+    inputIP.classList.add('inputActive')
+    inputSubnet.classList.remove('inputActive')
+    valueIpActive = true
+    valueSubnetActive = false
+  }
+  if(e.target.classList.contains('inputSubnet')){
+    inputIP.classList.remove('inputActive')
+    inputSubnet.classList.add('inputActive')
+    valueIpActive = false
+    valueSubnetActive = true
+  }
 }
 inputIP.addEventListener('input', handleInput)
 inputSubnet.addEventListener('input', handleInputSubnet)
 calculateIp.addEventListener('click', handleCalculate)
+inputBox.addEventListener('click',handleInputCheck)
+calculatorKeys.addEventListener('click',handleKey)

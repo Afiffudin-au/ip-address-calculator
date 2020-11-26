@@ -6,14 +6,34 @@
   <meta name='viewport' content='width=device-width, initial-scale=1.0'>
   <title>Document</title>
   <link rel='stylesheet' href='IP.css'>
+  <link rel='stylesheet' href='number.css'>
 </head>
 
 <body>
   <div class='container'>
     <div class="inputBox">
-      <input class="inputIp" type='text' placeholder="IP">
+      <input class="inputIp" type='text' placeholder="IP" value="">
       <input class="inputSubnet" type='number' placeholder="subnet class A/B/C 8-32">
-      <button class="calculate">Calculate</button>
+      <button style="margin-bottom: 5px;" class="calculate">Calculate</button>
+      <div class="calculator-keys">
+        <button type="button" value="7">7</button>
+        <button type="button" value="8">8</button>
+        <button type="button" value="9">9</button>
+  
+  
+        <button type="button" value="4">4</button>
+        <button type="button" value="5">5</button>
+        <button type="button" value="6">6</button>
+  
+  
+        <button type="button" value="1">1</button>
+        <button type="button" value="2">2</button>
+        <button type="button" value="3">3</button>
+  
+  
+        <button type="button" value="0">0</button>
+        <button type="button" class="decimal" value=".">.</button>
+      </div>
     </div>
     <p class='note2'>
       Open Source Project :<a target="_blank" href='https://github.com/Afiffudin-au/IP_Subnetting'>See Github</a>

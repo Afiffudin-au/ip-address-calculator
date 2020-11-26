@@ -10,7 +10,7 @@
 .inputBox{
   display: flex;
   flex-direction: column;
-  width: 320px;
+  width: 340px;
   margin: auto;
 }
 .inputBox input{
@@ -19,11 +19,13 @@
   border: none;
   outline: none;
   font-size: 16px;
-  border: 1px solid #1976d2;
   margin-bottom: 5px;
-  margin-bottom: 5px;
+  border: 1px solid rgb(224, 224, 224);
 }
-.inputBox button{
+.inputActive{
+  border: 1px solid #1976d2 !important;
+}
+.inputBox .calculate{
   padding: 10px;
 }
 .note{
