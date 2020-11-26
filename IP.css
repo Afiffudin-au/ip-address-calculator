@@ -27,6 +27,9 @@
 }
 .inputBox .calculate{
   padding: 10px;
+  background-color: #1976d2;
+  color: white;
+  outline: 0;
 }
 .note{
   color: rgb(241, 44, 44);
@@ -42,6 +45,8 @@ table {
   font-size: 16px;
   width: 100%;
   color: white;
+  table-layout: fixed;
+  overflow-wrap: break-word;
 }
 .stepCalculate{
   margin-bottom: 15px;
