@@ -3,7 +3,6 @@ const inputSubnet = document.querySelector('.inputSubnet')
 const calculateIp = document.querySelector('.calculate')
 const calculateResult = document.querySelector('.calculateResult')
 const calculation = document.querySelector('.calculation')
-const desc = document.querySelector('.desc')
 const timeExecution = document.querySelector('.timeExecution')
 const beforeCalculations = document.querySelector('.beforeCalculations')
 const stepCalculate = document.querySelector('.stepCalculate')
@@ -61,12 +60,7 @@ function calculate(ip, prefix) {
   const classC = prefix >= 24 && prefix <= 32
   const classB = prefix >= 16 && prefix <= 23
   const classA = prefix >= 8 && prefix <= 15
-  const content = (
-    `
-    <p class="note">Note : Cara perhitungan dibawah diambil dari proses perhitungan dibalik layar(Menggunakan Cara Baru) </p>`
-  )
   if (classC && afterSplit[3] !== undefined) {
-    desc.innerHTML = (content)
     beforeCalculations.innerHTML += (`<p>Prefix ${prefix} = ${ClassIP[`__${prefix}`]} IP</p>`)
     beforeCalculations.innerHTML += (`<p>4th Octet = ${afterSplit[3]}</p>`)
     stepCalculate.innerHTML += (`<tr><td>Total IP </td> <td>${ClassIP[`__${prefix}`]}</td></tr>`)
@@ -148,7 +142,6 @@ function calculate(ip, prefix) {
     let end = window.performance.now();
     timeExecution.innerHTML = `Execution time: ${Math.floor(end - start)} ms`
   } else if (classB && afterSplit[2] !== undefined) {
-    desc.innerHTML = (content)
     const prefixInt = parseInt(prefix)
     const imaginer = parseInt(prefixInt + 8)
     beforeCalculations.innerHTML += (`<p>Imaginer Prefix ${prefix} = ${imaginer} = ${ClassIP[`__${imaginer}`]} IP</p>`)
@@ -233,7 +226,6 @@ function calculate(ip, prefix) {
     let end = window.performance.now();
     timeExecution.innerHTML = `Execution time: ${Math.floor(end - start)} ms`
   }else if(classA && afterSplit[1] !== undefined){
-    desc.innerHTML = (content)
     const prefixInt = parseInt(prefix)
     const imaginer = prefixInt + 16
     const IPclass = ClassIP[`__${imaginer}`]
@@ -325,7 +317,6 @@ function validation(valueIp,valueSubnet) {
   beforeCalculations.innerHTML = ''
   stepCalculate.innerHTML = ''
   calculateResult.innerHTML = ''
-  desc.innerHTML = ''
   if (valueIp.match(regex) === null || valueSubnet === '') {
     return true
   } else {
