@@ -58,6 +58,8 @@ function calculate(ip, prefix) {
     firstIPArray = (copyArray)
     copyArray2[3] = lastIP
     lastIPArray = (copyArray2)
+    subnetMask = 256 - ClassIP[`__${prefix}`]
+    subnetMask = `255.255.255.${subnetMask}`
     const copyArray3 = [...firstIPArray]
     copyArray3[3] = copyArray3[3] + 1
     usableHostIpRange.first = copyArray3
@@ -80,6 +82,7 @@ function calculate(ip, prefix) {
     copyArray2[2] = lastIP
     lastIPArray = copyArray2
     subnetMask = 256 - IPclass
+    subnetMask = `255.255.${subnetMask}.0`
     const copyArray3 = [...firstIPArray]
     copyArray3[3] = copyArray3[3] + 1
     usableHostIpRange.first = copyArray3
@@ -104,6 +107,7 @@ function calculate(ip, prefix) {
     copyArray2[3] = 255
     lastIPArray = copyArray2
     subnetMask = 256 - IPclass
+    subnetMask = `255.${subnetMask}.0.0`
     const copyArray3 = [...firstIPArray]
     copyArray3[3] = copyArray3[3] + 1
     usableHostIpRange.first = copyArray3
@@ -112,4 +116,4 @@ function calculate(ip, prefix) {
     usableHostIpRange.last = copyArray4
   }
 }
-calculate('192.168.20.22', 16) //parameter 2 : allow string or number
+calculate('192.168.20.22', 8) //parameter 2 : allow string or number
