@@ -63,7 +63,7 @@ function calculate(ip, prefix) {
   if (classC && afterSplit[3] !== undefined) {
     beforeCalculations.innerHTML += (`<p>Prefix ${prefix} = ${ClassIP[`__${prefix}`]} IP</>`)
     beforeCalculations.innerHTML += (`<p>4th Octet = ${afterSplit[3]}</p>`)
-    beforeCalculations.innerHTML += (`<p>Cara :</p> `)
+    beforeCalculations.innerHTML += (`<p>Solutions :</p> `)
     stepCalculate.innerHTML += (`<tr><td>Total IP </td> <td>${ClassIP[`__${prefix}`]}</td></tr>`)
     stepCalculate.innerHTML += (`<tr><td>Calculate IP</td> <td>${selectArray} / ${ClassIP[`__${prefix}`]} = ${Math.floor(selectArray / ClassIP[`__${prefix}`])} * ${ClassIP[`__${prefix}`]} = ${Math.floor(selectArray / ClassIP[`__${prefix}`]) * ClassIP[`__${prefix}`]}</td></tr>`)
     const firstIP = Math.floor(selectArray / ClassIP[`__${prefix}`]) * ClassIP[`__${prefix}`]
@@ -95,7 +95,7 @@ function calculate(ip, prefix) {
     stepCalculate.innerHTML += (`<tr><td>Valid Host</td> <td>${(ClassIP[`__${prefix}`])} - 2 = ${(ClassIP[`__${prefix}`] - 2)}</td></tr>`)
     const results = (
       `
-      <h3 style="color : black">Hasil</h3>
+      <h3 style="color : black">Results</h3>
       <tr>
         <td>ip address</td>
         <td>${ip}</td>
@@ -147,7 +147,7 @@ function calculate(ip, prefix) {
     const imaginer = parseInt(prefixInt + 8)
     beforeCalculations.innerHTML += (`<p>Imaginer Prefix ${prefix} = ${imaginer} = ${ClassIP[`__${imaginer}`]} IP</p>`)
     beforeCalculations.innerHTML += (`<p>3rd Octet = ${afterSplit[2]}</p>`)
-    beforeCalculations.innerHTML += (`<p>Cara :</p> `)
+    beforeCalculations.innerHTML += (`<p>Solutions :</p> `)
     stepCalculate.innerHTML += (`<tr><td>imaginer</td><td>${prefix} + 8 = ${prefixInt + 8}</td></tr>`)
     const IPclass = ClassIP[`__${imaginer}`]
     const totalIP = IPclass * 256
@@ -182,7 +182,7 @@ function calculate(ip, prefix) {
     stepCalculate.innerHTML += (`<tr><td>Valid Host </td> <td>${(totalIP)} - 2 = ${(totalIP - 2)}</td></tr>`)
     const results = (
       `
-    <h3 style="color : black">Hasil</h3>
+    <h3 style="color : black">Results</h3>
     <tr>
       <td>ip address</td>
       <td>${ip}</td>
@@ -234,7 +234,7 @@ function calculate(ip, prefix) {
     const totalIP = IPclass * 65536
     beforeCalculations.innerHTML += (`<p>Imaginer Prefix ${prefix} = ${imaginer} = ${ClassIP[`__${imaginer}`]} IP</p>`)
     beforeCalculations.innerHTML += (`<p>2nd Octet = ${afterSplit[1]}</p>`)
-    beforeCalculations.innerHTML += (`<p>Cara :</p> `)
+    beforeCalculations.innerHTML += (`<p>Solutions :</p> `)
     stepCalculate.innerHTML += `<tr><td>Imaginer</td><td>${prefixInt} + 16 = ${imaginer}</td></tr>`
     stepCalculate.innerHTML += `<tr><td>Total IP </td><td>${IPclass} * 512 = ${totalIP}</td></tr>`
     const firstIP = Math.floor(selectArray3 / IPclass) * IPclass
@@ -269,7 +269,7 @@ function calculate(ip, prefix) {
     stepCalculate.innerHTML += (`<tr><td>Valid Host </td> <td>${(totalIP)} - 2 = ${(totalIP - 2)}</td></tr>`)
     const results = (
       `
-    <h3 style="color : black">Hasil</h3>
+    <h3 style="color : black">Results</h3>
     <tr>
       <td>ip address</td>
       <td>${ip}</td>
