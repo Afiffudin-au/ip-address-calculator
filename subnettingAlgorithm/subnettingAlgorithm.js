@@ -112,4 +112,4 @@ function calculate(ip, prefix) {
     usableHostIpRange.last = copyArray4
   }
 }
-calculate('192.168.20.22', 16) //paramater 2 : allow string or number
+calculate('192.168.20.22', 16) //parameter 2 : allow string or number
