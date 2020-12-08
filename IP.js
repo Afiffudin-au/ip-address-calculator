@@ -109,7 +109,7 @@ function calculate(ip, prefix) {
         <td>${firstIPArray.join('.') + " - " + lastIPArray.join('.')}</td>
       </tr>
       <tr>
-        <td>valid host</td>
+        <td>valid host range</td>
         <td>${usableHostIpRange.first.join('.') + ' - ' + usableHostIpRange.last.join('.')}</td>
       </tr>
       <tr>
@@ -196,7 +196,7 @@ function calculate(ip, prefix) {
       <td>${firstIPArray.join('.') + " - " + lastIPArray.join('.')}</td>
     </tr>
     <tr>
-      <td>valid host</td>
+      <td>valid host range</td>
       <td>${usableHostIpRange.first.join('.') + ' - ' + usableHostIpRange.last.join('.')}</td>
     </tr>
     <tr>
@@ -283,7 +283,7 @@ function calculate(ip, prefix) {
       <td>${firstIPArray.join('.') + " - " + lastIPArray.join('.')}</td>
     </tr>
     <tr>
-      <td>valid host</td>
+      <td>valid host range</td>
       <td>${usableHostIpRange.first.join('.') + ' - ' + usableHostIpRange.last.join('.')}</td>
     </tr>
     <tr>
