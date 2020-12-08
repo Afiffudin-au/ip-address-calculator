@@ -1,4 +1,3 @@
-# IP_Subnetting
 # why I created this:
 1. frustration with manual subnetting calculations.
 2. the old way is no longer fast
@@ -7,4 +6,6 @@
 # type
 - open source project ✔
 - vanilla javaScript 100% ✔
-# Automatic IP Subnetting programs with calculation method and results
+- simple mathematics calculation algorithm ✔
+# Project site :
+- https://afiffudin-au.github.io/IP_Subnetting/
