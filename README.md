@@ -8,4 +8,4 @@
 - vanilla javaScript 100% ✔
 - simple mathematics calculation algorithm ✔
 # Project site :
-- https://afiffudin-au.github.io/IP_Subnetting/
+- https://ip-subnet-calculator.netlify.app/
