@@ -320,11 +320,20 @@ function validation(valueIp,valueSubnet) {
   beforeCalculations.innerHTML = ''
   stepCalculate.innerHTML = ''
   calculateResult.innerHTML = ''
-    if (valueIp.match(regex) === null || valueSubnet === '') {
+  const afterSplit = valueIp.split('.')
+  for(let i = 0; i<afterSplit.length; i++){
+    if(afterSplit[i] > 255){
       return 'FAILURE'
-    } else {
-      return 'SUCCESS'
     }
+  }
+  if(afterSplit.length === 2){
+    return 'FAILURE'
+  }
+  if (valueIp.match(regex) === null || valueSubnet === '') {
+    return 'FAILURE'
+  } else {
+    return 'SUCCESS'
+  }
 }
 function handleInput(e) {
   valueIp = e.target.value
