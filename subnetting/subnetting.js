@@ -320,28 +320,28 @@ function validation(valueIp,valueSubnet) {
   beforeCalculations.innerHTML = ''
   stepCalculate.innerHTML = ''
   calculateResult.innerHTML = ''
-  if (valueIp.match(regex) === null || valueSubnet === '') {
-    return true
-  } else {
-    return false
-  }
+    if (valueIp.match(regex) === null || valueSubnet === '') {
+      return 'FAILURE'
+    } else {
+      return 'SUCCESS'
+    }
 }
 function handleInput(e) {
   valueIp = e.target.value
-  if (validation(valueIp, valueSubnet) === true) {
+  if (validation(valueIp, valueSubnet) === 'FAILURE') {
     return
   }
   calculate(valueIp, valueSubnet)
 }
 function handleInputSubnet(e) {
   valueSubnet = e.target.value
-  if (validation(valueIp, valueSubnet) === true) {
+  if (validation(valueIp, valueSubnet) === 'FAILURE') {
     return
   }
   calculate(valueIp, valueSubnet)
 }
 function handleCalculate() {
-  if (validation(valueIp, valueSubnet) === true) {
+  if (validation(valueIp, valueSubnet) === 'FAILURE') {
     alert("IP/SUBNET TIDAK VALID!!!")
     return
   }
