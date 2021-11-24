@@ -40,7 +40,7 @@ function calculate(ip, prefix) {
   let subnetMask = null
   const usableHostIpRange = {
     first: null,
-    last: null
+    last: null,
   }
   const afterSplit = ip.split('.')
   const selectArray = parseInt(afterSplit[afterSplit.length - 1])
@@ -50,14 +50,15 @@ function calculate(ip, prefix) {
   const classB = prefix >= 16 && prefix <= 23
   const classA = prefix >= 8 && prefix <= 15
   if (classC && afterSplit[3] !== undefined) {
-    const firstIP = Math.floor(selectArray / ClassIP[`__${prefix}`]) * ClassIP[`__${prefix}`]
+    const firstIP =
+      Math.floor(selectArray / ClassIP[`__${prefix}`]) * ClassIP[`__${prefix}`]
     const lastIP = firstIP + ClassIP[`__${prefix}`] - 1
     const copyArray = [...afterSplit]
     const copyArray2 = [...afterSplit]
     copyArray[3] = firstIP
-    firstIPArray = (copyArray)
+    firstIPArray = copyArray
     copyArray2[3] = lastIP
-    lastIPArray = (copyArray2)
+    lastIPArray = copyArray2
     subnetMask = 256 - ClassIP[`__${prefix}`]
     subnetMask = `255.255.255.${subnetMask}`
     const copyArray3 = [...firstIPArray]
@@ -71,6 +72,7 @@ function calculate(ip, prefix) {
     const imaginer = parseInt(prefixInt + 8)
     const IPclass = ClassIP[`__${imaginer}`]
     const totalIP = IPclass * 256
+    const totalIpUsable = totalIP - 2
     const firstIP = Math.floor(selectArray2 / IPclass) * IPclass
     const lastIP = firstIP + IPclass - 1
     const copyArray = [...afterSplit]
@@ -89,11 +91,12 @@ function calculate(ip, prefix) {
     const copyArray4 = [...lastIPArray]
     copyArray4[3] = copyArray4[3] - 1
     usableHostIpRange.last = copyArray4
-  }else if (classA && afterSplit[1] !== undefined) {
+  } else if (classA && afterSplit[1] !== undefined) {
     const prefixInt = parseInt(prefix)
     const imaginer = prefixInt + 16
     const IPclass = ClassIP[`__${imaginer}`]
     const totalIP = IPclass * 65536
+    const totalIpUsable = totalIP - 2
     const firstIP = Math.floor(selectArray3 / IPclass) * IPclass
     const lastIP = firstIP + IPclass - 1
     const copyArray = [...afterSplit]

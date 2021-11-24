@@ -1,19 +1,19 @@
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
-.container{
+.container {
   padding: 5px;
 }
-.inputBox{
+.inputBox {
   display: flex;
   flex-direction: column;
   width: 340px;
   margin: auto;
 }
-.inputBox input{
+.inputBox input {
   width: 100%;
   padding: 10px;
   border: none;
@@ -22,43 +22,60 @@
   margin-bottom: 5px;
   border: 1px solid rgb(224, 224, 224);
 }
-.inputActive{
+.inputActive {
   border: 1px solid #1976d2 !important;
 }
-.inputBox .calculate{
+.inputBox .calculate {
   padding: 10px;
   background-color: #1976d2;
   color: white;
   outline: 0;
 }
-.note{
+.note {
   color: rgb(241, 44, 44);
 }
-.beforeCalculations{
+.beforeCalculations {
   font-family: monospace;
   font-size: 16px;
 }
 table {
   border-collapse: collapse;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
   font-family: monospace;
   font-size: 16px;
   width: 100%;
-  color: white;
+  color: rgb(0, 0, 0);
+  font-weight: 500;
   table-layout: fixed;
   overflow-wrap: break-word;
 }
-.stepCalculate{
+.stepCalculate {
   margin-bottom: 15px;
 }
-td, th {
+td,
+th {
+  border: 1px solid #bdbdbd;
+  text-align: left;
+  padding: 8px;
+}
+tr {
+  transition: all 0.1s ease;
+  cursor: pointer;
+  background-color: #f5f5f5;
+}
+tr:nth-child(even) {
+  background-color: #eeeeee;
+}
+
+/* td,
+th {
   border: 1px solid #607d8b;
   text-align: left;
   padding: 8px;
 }
-tr{
+tr {
   background-color: #37474f;
 }
 tr:nth-child(even) {
   background-color: #263238;
-}
+} */
