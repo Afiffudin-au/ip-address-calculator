@@ -179,7 +179,9 @@ function calculate(ip, prefix) {
       </tr>
       <tr>
         <td>Number of Usable Hosts</td>
-        <td>${ClassIP[`__${prefix}`] - 2}</td>
+        <td>${
+          ClassIP[`__${prefix}`] - 2 === -1 ? '0' : ClassIP[`__${prefix}`] - 2
+        }</td>
       </tr>
       <tr>
       `
