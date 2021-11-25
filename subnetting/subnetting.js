@@ -50,6 +50,8 @@ function calculate(ip, prefix) {
   let firstIPArray = null
   let lastIPArray = null
   let subnetMask = null
+  let ipClass = ''
+  let typeOfIp = ''
   const usableHostIpRange = {
     first: null,
     last: null,
@@ -62,6 +64,56 @@ function calculate(ip, prefix) {
   const classB = prefix >= 16 && prefix <= 23
   const classA = prefix >= 8 && prefix <= 15
   const prefix31To32 = prefix >= 31 && prefix <= 32
+  if (prefix >= 24 && prefix <= 32) {
+    ipClass = 'C'
+  } else if (prefix >= 16 && prefix <= 23) {
+    ipClass = 'B'
+  } else if (prefix >= 8 && prefix <= 15) {
+    ipClass = 'A'
+  }
+  //public and private ip detection
+  const selectArrayIndexOf1 = afterSplit[1]
+  const selectArrayIndexOf2 = afterSplit[2]
+  const selectArrayIndexOf3 = afterSplit[3]
+  const parsePrefix = parseInt(prefix)
+  if (parsePrefix === 16 || parsePrefix === 12 || parsePrefix === 8) {
+    if (parseInt(prefix) === 16) {
+      if (parseInt(afterSplit[0]) === 192 && parseInt(afterSplit[1]) === 168) {
+        if (selectArrayIndexOf2 <= 255 && selectArrayIndexOf3 <= 255) {
+          typeOfIp = 'Private'
+        }
+      } else {
+        typeOfIp = 'Public'
+      }
+    }
+    if (parseInt(prefix) === 12) {
+      const MaxIpHost = selectArrayIndexOf1 >= 16 && selectArrayIndexOf1 <= 31
+      if (parseInt(afterSplit[0]) === 172 && MaxIpHost) {
+        if (selectArrayIndexOf2 <= 255 && selectArrayIndexOf3 <= 255) {
+          typeOfIp = 'Private'
+        }
+      } else {
+        typeOfIp = 'Public'
+      }
+    }
+    if (parseInt(prefix) === 8) {
+      if (parseInt(afterSplit[0]) === 10) {
+        if (
+          selectArrayIndexOf2 <= 255 &&
+          selectArrayIndexOf3 <= 255 &&
+          selectArrayIndexOf1 <= 255
+        ) {
+          typeOfIp = 'Private'
+        }
+      } else {
+        typeOfIp = 'Public'
+      }
+    }
+  } else {
+    typeOfIp = 'Public'
+  }
+
+  //End of public and private ip detection
   if (classC && afterSplit[3] !== undefined) {
     beforeCalculations.innerHTML += `<p>Prefix ${prefix} = ${
       ClassIP[`__${prefix}`]
@@ -130,6 +182,8 @@ function calculate(ip, prefix) {
     } - 2 = ${
       ClassIP[`__${prefix}`] - 2 === -1 ? '0 N/A' : ClassIP[`__${prefix}`] - 2
     }</td></tr>`
+    stepCalculate.innerHTML += `<tr><td>IP Class</td><td>/${prefix}</td></tr>`
+    stepCalculate.innerHTML += `<tr><td>CIDR Notation</td><td>${ipClass}</td></tr>`
     const results = `
       <h3 style="color : black">Results</h3>
       <tr>
@@ -181,6 +235,9 @@ function calculate(ip, prefix) {
         }</td>
       </tr>
       <tr>
+      <tr><td>IP Class</td><td>/${prefix}</td></tr>
+      <tr><td>CIDR Notation</td><td>${ipClass}</td></tr>
+      <tr><td>IP Type</td><td>${typeOfIp}</td></tr>
       `
     calculateResult.innerHTML = results
     let end = window.performance.now()
@@ -244,6 +301,8 @@ function calculate(ip, prefix) {
       '.'
     )} - ${usableHostIpRange.last.join('.')}</td></tr>`
     stepCalculate.innerHTML += `<tr><td>Number of Usable Hosts </td> <td>${totalIP} - 2 = ${totalIpUsable.toLocaleString()}</td></tr>`
+    stepCalculate.innerHTML += `<tr><td>IP Class</td><td>/${prefix}</td></tr>`
+    stepCalculate.innerHTML += `<tr><td>CIDR Notation</td><td>${ipClass}</td></tr>`
     const results = `
     <h3 style="color : black">Results</h3>
     <tr>
@@ -289,7 +348,11 @@ function calculate(ip, prefix) {
     <tr>
       <td>Number of Usable Hosts</td>
       <td>${totalIpUsable.toLocaleString()}</td>
-    </tr>`
+    </tr>
+    <tr><td>IP Class</td><td>/${prefix}</td></tr>
+    <tr><td>CIDR Notation</td><td>${ipClass}</td></tr>
+    <tr><td>IP Type</td><td>${typeOfIp}</td></tr>
+    `
     calculateResult.innerHTML = results
     let end = window.performance.now()
     timeExecution.innerHTML = `Execution time: ${Math.floor(end - start)} ms`
@@ -352,6 +415,8 @@ function calculate(ip, prefix) {
       '.'
     )} - ${usableHostIpRange.last.join('.')}</td></tr>`
     stepCalculate.innerHTML += `<tr><td>Number of Usable Hosts </td> <td>${totalIP} - 2 = ${totalIpUsable.toLocaleString()}</td></tr>`
+    stepCalculate.innerHTML += `<tr><td>IP Class</td><td>/${prefix}</td></tr>`
+    stepCalculate.innerHTML += `<tr><td>CIDR Notation</td><td>${ipClass}</td></tr>`
     const results = `
     <h3 style="color : black">Results</h3>
     <tr>
@@ -397,7 +462,11 @@ function calculate(ip, prefix) {
     <tr>
       <td>Number of Usable Hosts</td>
       <td>${totalIpUsable.toLocaleString()}</td>
-    </tr>`
+    </tr>
+    <tr><td>IP Class</td><td>/${prefix}</td></tr>
+    <tr><td>CIDR Notation</td><td>${ipClass}</td></tr>
+    <tr><td>IP Type</td><td>${typeOfIp}</td></tr>
+    `
     calculateResult.innerHTML = results
     let end = window.performance.now()
     timeExecution.innerHTML = `Execution time: ${Math.floor(end - start)} ms`

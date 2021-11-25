@@ -38,6 +38,7 @@ function calculate(ip, prefix) {
   let firstIPArray = null
   let lastIPArray = null
   let subnetMask = null
+  let ipClass = ''
   const usableHostIpRange = {
     first: null,
     last: null,
@@ -50,6 +51,55 @@ function calculate(ip, prefix) {
   const classB = prefix >= 16 && prefix <= 23
   const classA = prefix >= 8 && prefix <= 15
   const prefix31To32 = prefix >= 31 && prefix <= 32
+  if (prefix >= 24 && prefix <= 32) {
+    ipClass = 'C'
+  } else if (prefix >= 16 && prefix <= 23) {
+    ipClass = 'B'
+  } else if (prefix >= 8 && prefix <= 15) {
+    ipClass = 'A'
+  }
+  //public and private ip detection
+  const selectArrayIndexOf1 = afterSplit[1]
+  const selectArrayIndexOf2 = afterSplit[2]
+  const selectArrayIndexOf3 = afterSplit[3]
+  const parsePrefix = parseInt(prefix)
+  if (parsePrefix === 16 || parsePrefix === 12 || parsePrefix === 8) {
+    if (parseInt(prefix) === 16) {
+      if (parseInt(afterSplit[0]) === 192 && parseInt(afterSplit[1]) === 168) {
+        if (selectArrayIndexOf2 <= 255 && selectArrayIndexOf3 <= 255) {
+          console.log('Private')
+        }
+      } else {
+        console.log('Public')
+      }
+    }
+    if (parseInt(prefix) === 12) {
+      const MaxIpHost = selectArrayIndexOf1 >= 16 && selectArrayIndexOf1 <= 31
+      if (parseInt(afterSplit[0]) === 172 && MaxIpHost) {
+        if (selectArrayIndexOf2 <= 255 && selectArrayIndexOf3 <= 255) {
+          console.log('Private')
+        }
+      } else {
+        console.log('Public')
+      }
+    }
+    if (parseInt(prefix) === 8) {
+      if (parseInt(afterSplit[0]) === 10) {
+        if (
+          selectArrayIndexOf2 <= 255 &&
+          selectArrayIndexOf3 <= 255 &&
+          selectArrayIndexOf1 <= 255
+        ) {
+          console.log('Private')
+        }
+      } else {
+        console.log('Public')
+      }
+    }
+  } else {
+    console.log('Public')
+  }
+  //End of public and private ip detection
   if (classC && afterSplit[3] !== undefined) {
     const firstIP =
       Math.floor(selectArray / ClassIP[`__${prefix}`]) * ClassIP[`__${prefix}`]
