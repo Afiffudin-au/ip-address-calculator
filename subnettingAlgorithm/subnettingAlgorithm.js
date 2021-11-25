@@ -49,6 +49,7 @@ function calculate(ip, prefix) {
   const classC = prefix >= 24 && prefix <= 32
   const classB = prefix >= 16 && prefix <= 23
   const classA = prefix >= 8 && prefix <= 15
+  const prefix31To32 = prefix >= 31 && prefix <= 32
   if (classC && afterSplit[3] !== undefined) {
     const firstIP =
       Math.floor(selectArray / ClassIP[`__${prefix}`]) * ClassIP[`__${prefix}`]
@@ -67,6 +68,10 @@ function calculate(ip, prefix) {
     const copyArray4 = [...lastIPArray]
     copyArray4[3] = copyArray4[3] - 1
     usableHostIpRange.last = copyArray4
+    if (prefix31To32) {
+      usableHostIpRange.first = []
+      usableHostIpRange.last = []
+    }
   } else if (classB && afterSplit[2] !== undefined) {
     const prefixInt = parseInt(prefix)
     const imaginer = parseInt(prefixInt + 8)

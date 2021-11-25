@@ -62,7 +62,6 @@ function calculate(ip, prefix) {
   const classB = prefix >= 16 && prefix <= 23
   const classA = prefix >= 8 && prefix <= 15
   const prefix31To32 = prefix >= 31 && prefix <= 32
-  console.log(prefix31To32)
   if (classC && afterSplit[3] !== undefined) {
     beforeCalculations.innerHTML += `<p>Prefix ${prefix} = ${
       ClassIP[`__${prefix}`]
@@ -119,11 +118,7 @@ function calculate(ip, prefix) {
     if (prefix31To32) {
       usableHostIpRange.first = []
       usableHostIpRange.last = []
-      // if (ClassIP[`__${prefix}`] - 2 === -1) {
-      //   ClassIP[`__${prefix}`] = 2
-      // }
     }
-    console.log(usableHostIpRange.first)
     stepCalculate.innerHTML += `<tr><td>RANGE IP </td> <td>${firstIPArray.join(
       '.'
     )} - ${lastIPArray.join('.')}</td></tr>`
@@ -133,7 +128,7 @@ function calculate(ip, prefix) {
     stepCalculate.innerHTML += `<tr><td>Valid Host</td> <td>${
       ClassIP[`__${prefix}`]
     } - 2 = ${
-      ClassIP[`__${prefix}`] - 2 === -1 ? '0' : ClassIP[`__${prefix}`] - 2
+      ClassIP[`__${prefix}`] - 2 === -1 ? '0 N/A' : ClassIP[`__${prefix}`] - 2
     }</td></tr>`
     const results = `
       <h3 style="color : black">Results</h3>
@@ -180,7 +175,9 @@ function calculate(ip, prefix) {
       <tr>
         <td>Number of Usable Hosts</td>
         <td>${
-          ClassIP[`__${prefix}`] - 2 === -1 ? '0' : ClassIP[`__${prefix}`] - 2
+          ClassIP[`__${prefix}`] - 2 === -1
+            ? '0  N/A'
+            : ClassIP[`__${prefix}`] - 2
         }</td>
       </tr>
       <tr>
