@@ -73,11 +73,7 @@ function calculate(ip, prefix) {
   }
   //public and private ip detection
   const selectArrayIndexOf1 = afterSplit[1]
-  const selectArrayIndexOf2 = afterSplit[2]
-  const selectArrayIndexOf3 = afterSplit[3]
   const MaxIpHost = selectArrayIndexOf1 >= 16 && selectArrayIndexOf1 <= 31
-  //Class A
-
   if (parseInt(afterSplit[0]) === 10) {
     typeOfIp = 'Private'
   } else if (parseInt(afterSplit[0]) === 172 && MaxIpHost) {
