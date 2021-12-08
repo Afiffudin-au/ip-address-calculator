@@ -60,44 +60,18 @@ function calculate(ip, prefix) {
   }
   //public and private ip detection
   const selectArrayIndexOf1 = afterSplit[1]
-  const selectArrayIndexOf2 = afterSplit[2]
-  const selectArrayIndexOf3 = afterSplit[3]
-  const parsePrefix = parseInt(prefix)
-  if (parsePrefix === 16 || parsePrefix === 12 || parsePrefix === 8) {
-    if (parseInt(prefix) === 16) {
-      if (parseInt(afterSplit[0]) === 192 && parseInt(afterSplit[1]) === 168) {
-        if (selectArrayIndexOf2 <= 255 && selectArrayIndexOf3 <= 255) {
-          console.log('Private')
-        }
-      } else {
-        console.log('Public')
-      }
-    }
-    if (parseInt(prefix) === 12) {
-      const MaxIpHost = selectArrayIndexOf1 >= 16 && selectArrayIndexOf1 <= 31
-      if (parseInt(afterSplit[0]) === 172 && MaxIpHost) {
-        if (selectArrayIndexOf2 <= 255 && selectArrayIndexOf3 <= 255) {
-          console.log('Private')
-        }
-      } else {
-        console.log('Public')
-      }
-    }
-    if (parseInt(prefix) === 8) {
-      if (parseInt(afterSplit[0]) === 10) {
-        if (
-          selectArrayIndexOf2 <= 255 &&
-          selectArrayIndexOf3 <= 255 &&
-          selectArrayIndexOf1 <= 255
-        ) {
-          console.log('Private')
-        }
-      } else {
-        console.log('Public')
-      }
-    }
+  const MaxIpHost = selectArrayIndexOf1 >= 16 && selectArrayIndexOf1 <= 31
+  if (parseInt(afterSplit[0]) === 10) {
+    typeOfIp = 'Private'
+  } else if (parseInt(afterSplit[0]) === 172 && MaxIpHost) {
+    typeOfIp = 'Private'
+  } else if (
+    parseInt(afterSplit[0]) === 192 &&
+    parseInt(afterSplit[1]) === 168
+  ) {
+    typeOfIp = 'Private'
   } else {
-    console.log('Public')
+    typeOfIp = 'Public'
   }
   //End of public and private ip detection
   if (classC && afterSplit[3] !== undefined) {
