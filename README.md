@@ -14,4 +14,4 @@ Most of my projects are of the private type, but for now and so on I will make m
 - vanilla javaScript 100% ✔
 - simple mathematics calculation algorithm ✔
 # Project site :
-- https://ip-subnet-calculator.netlify.app/
+- https://ipcalculator.tosulafiffudin.com/
