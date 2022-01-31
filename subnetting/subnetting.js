@@ -10,8 +10,10 @@ const regex =
   '^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?).){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$'
 const regexBinary = '([^0-9]|^)1234([^0-9]|$)'
 const inputBox = document.querySelector('.inputBox')
+const showMethodCalculate = document.querySelector('.show-method')
 let valueIp = ''
 let valueSubnet = ''
+let showMethod = false
 const ClassIP = {
   __24: 256,
   __25: 128,
@@ -88,21 +90,6 @@ function calculate(ip, prefix) {
   }
   //End of public and private ip detection
   if (classC && afterSplit[3] !== undefined) {
-    beforeCalculations.innerHTML += `<p>Prefix ${prefix} = ${
-      ClassIP[`__${prefix}`]
-    } IP</>`
-    beforeCalculations.innerHTML += `<p>4th Octet = ${afterSplit[3]}</p>`
-    beforeCalculations.innerHTML += `<p>Solutions :</p> `
-    stepCalculate.innerHTML += `<tr><td>Total IP </td> <td>${
-      ClassIP[`__${prefix}`]
-    }</td></tr>`
-    stepCalculate.innerHTML += `<tr><td>Calculate IP</td> <td>${selectArray} / ${
-      ClassIP[`__${prefix}`]
-    } = ${Math.floor(selectArray / ClassIP[`__${prefix}`])} * ${
-      ClassIP[`__${prefix}`]
-    } = ${
-      Math.floor(selectArray / ClassIP[`__${prefix}`]) * ClassIP[`__${prefix}`]
-    }</td></tr>`
     const firstIP =
       Math.floor(selectArray / ClassIP[`__${prefix}`]) * ClassIP[`__${prefix}`]
     const lastIP = firstIP + ClassIP[`__${prefix}`] - 1
@@ -110,30 +97,9 @@ function calculate(ip, prefix) {
     const copyArray2 = [...afterSplit]
     copyArray[3] = firstIP
     firstIPArray = copyArray
-    stepCalculate.innerHTML += `<tr><td>IP firstResult</td> <td>${afterSplit.join(
-      '.'
-    )} 
-    => ${firstIPArray.join('.')} </td></tr>`
-    stepCalculate.innerHTML += `<tr><td>Calculate IP</td>  <td>${firstIP} + ${
-      ClassIP[`__${prefix}`]
-    } - 1 = ${firstIP + ClassIP[`__${prefix}`] - 1}</td></tr>`
     copyArray2[3] = lastIP
     lastIPArray = copyArray2
-    stepCalculate.innerHTML += `<tr><td>IP lastResult <td>${afterSplit.join(
-      '.'
-    )} 
-    => ${lastIPArray.join('.')} </td></tr>`
-    stepCalculate.innerHTML += `<tr><td>Network Address (firstResult)</td><td>${firstIPArray.join(
-      '.'
-    )}</td></tr>`
-    stepCalculate.innerHTML += `<tr><td>Broadcast Address (lastResult)</td><td>${lastIPArray.join(
-      '.'
-    )}</td></tr>`
     subnetMask = 256 - ClassIP[`__${prefix}`]
-    stepCalculate.innerHTML += `<tr><td>Subnet calculate</td> <td>256 - ${
-      ClassIP[`__${prefix}`]
-    } = ${256 - ClassIP[`__${prefix}`]}</td></tr>`
-    stepCalculate.innerHTML += `<tr><td>Subnet result</td> <td>255.255.255.${subnetMask}</td></tr>`
     const copyArray3 = [...firstIPArray]
     copyArray3[3] = copyArray3[3] + 1
     usableHostIpRange.first = copyArray3
@@ -144,19 +110,9 @@ function calculate(ip, prefix) {
       usableHostIpRange.first = []
       usableHostIpRange.last = []
     }
-    stepCalculate.innerHTML += `<tr><td>RANGE IP </td> <td>${firstIPArray.join(
-      '.'
-    )} - ${lastIPArray.join('.')}</td></tr>`
-    stepCalculate.innerHTML += `<tr><td>Usable Host IP Range</td><td>${usableHostIpRange.first.join(
-      '.'
-    )} - ${usableHostIpRange.last.join('.')}</td></tr>`
-    stepCalculate.innerHTML += `<tr><td>Valid Host</td> <td>${
-      ClassIP[`__${prefix}`]
-    } - 2 = ${
-      ClassIP[`__${prefix}`] - 2 === -1 ? '0 N/A' : ClassIP[`__${prefix}`] - 2
-    }</td></tr>`
-    stepCalculate.innerHTML += `<tr><td>IP Class</td><td>/${prefix}</td></tr>`
-    stepCalculate.innerHTML += `<tr><td>CIDR Notation</td><td>${ipClass}</td></tr>`
+    if (showMethod) {
+      console.log('Tampilkan cara')
+    }
     const results = `
       <h3 style="color : black">Results</h3>
       <tr>
@@ -488,6 +444,9 @@ function handleCalculate() {
   }
   calculate(valueIp, valueSubnet)
 }
+function handleShowCalculateMethod(e) {
+  showMethod = e.target.checked || false
+}
 function handleActive(e) {
   if (e.target.classList.contains('inputIp')) {
     inputSubnet.classList.remove('inputActive')
@@ -501,4 +460,5 @@ function handleActive(e) {
 inputIP.addEventListener('input', handleInput)
 inputSubnet.addEventListener('input', handleInputSubnet)
 calculateIp.addEventListener('click', handleCalculate)
+showMethodCalculate.addEventListener('change', handleShowCalculateMethod)
 // inputBox.addEventListener('click', handleActive)

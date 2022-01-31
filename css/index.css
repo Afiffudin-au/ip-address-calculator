@@ -24,7 +24,8 @@ body {
   font-size: 17px;
   font-weight: 600;
 }
-.inputBox input {
+.inputBox .inputIp,
+.inputBox .inputSubnet {
   border-radius: 10px;
   padding-left: 5px;
   padding-top: 3px;
@@ -43,6 +44,20 @@ body {
 }
 .inputBox input:focus {
   outline: none;
+}
+.checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.label_method {
+  margin-right: 5px;
+  font-size: 16px;
+}
+.show-method {
+  width: 20px;
+  height: 20px;
+  display: block;
 }
 .inputBox .btn-calculate {
   background: #4e91cf;
