@@ -1,6 +1,6 @@
 const inputIP = document.querySelector('.inputIp')
 const inputSubnet = document.querySelector('.inputSubnet')
-const calculateIp = document.querySelector('.calculate')
+const calculateIp = document.querySelector('.btn-calculate')
 const calculateResult = document.querySelector('.calculateResult')
 const calculation = document.querySelector('.calculation')
 const timeExecution = document.querySelector('.timeExecution')
@@ -480,7 +480,7 @@ function handleInputSubnet(e) {
 }
 function handleCalculate() {
   if (validation(valueIp, valueSubnet) === 'FAILURE') {
-    alert('IP/SUBNET NOT VALID!!!')
+    alert('Invalid IP Address')
     return
   }
   if (valueSubnet < 8 || valueSubnet > 32) {
@@ -501,4 +501,4 @@ function handleActive(e) {
 inputIP.addEventListener('input', handleInput)
 inputSubnet.addEventListener('input', handleInputSubnet)
 calculateIp.addEventListener('click', handleCalculate)
-inputBox.addEventListener('click', handleActive)
+// inputBox.addEventListener('click', handleActive)

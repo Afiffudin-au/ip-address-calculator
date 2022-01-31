@@ -3,33 +3,55 @@
   margin: 0;
   box-sizing: border-box;
 }
-
+html,
+body {
+  font-family: 'Poppins', sans-serif;
+}
 .container {
   padding: 5px;
 }
 .inputBox {
   display: flex;
   flex-direction: column;
-  width: 340px;
+  width: 500px;
   margin: auto;
 }
+.inputBox .label_ip {
+  font-size: 17px;
+  font-weight: 600;
+}
+.inputBox .label_subnet {
+  font-size: 17px;
+  font-weight: 600;
+}
 .inputBox input {
+  border-radius: 10px;
+  padding-left: 5px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-right: 5px;
+  color: black;
+  font-weight: 600;
+  font-size: 15px;
   width: 100%;
-  padding: 10px;
-  border: none;
+  height: 35px;
+  border: 2px solid black;
+  background: #ffffff;
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+.inputBox input:focus {
   outline: none;
-  font-size: 16px;
-  margin-bottom: 5px;
-  border: 1px solid rgb(224, 224, 224);
 }
-.inputActive {
-  border: 1px solid #1976d2 !important;
-}
-.inputBox .calculate {
-  padding: 10px;
-  background-color: #1976d2;
+.inputBox .btn-calculate {
+  background: #4e91cf;
+  border-radius: 10px;
+  height: 50px;
+  text-transform: uppercase;
   color: white;
-  outline: 0;
+  font-weight: 700;
+  font-size: 17px;
 }
 .note {
   color: rgb(241, 44, 44);
@@ -67,15 +89,26 @@ tr:nth-child(even) {
   background-color: #eeeeee;
 }
 
-/* td,
-th {
-  border: 1px solid #607d8b;
-  text-align: left;
-  padding: 8px;
+@media (max-width: 576px) {
+  .inputBox {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: auto;
+  }
+  .inputBox .label_ip {
+    font-size: 15px;
+  }
+  .inputBox .label_subnet {
+    font-size: 15px;
+  }
+  .inputBox input {
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .inputBox .btn-calculate {
+    height: 40px;
+    font-weight: 600;
+    font-size: 15px;
+  }
 }
-tr {
-  background-color: #37474f;
-}
-tr:nth-child(even) {
-  background-color: #263238;
-} */
