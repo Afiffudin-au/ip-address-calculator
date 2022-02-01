@@ -164,4 +164,8 @@ tr:nth-child(even) {
   table {
     font-size: 16px;
   }
+  td,
+  th {
+    padding: 8px;
+  }
 }
