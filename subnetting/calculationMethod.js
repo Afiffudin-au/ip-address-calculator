@@ -88,7 +88,7 @@ function calculationMethod(ip, prefix) {
     stepCalculate.innerHTML += `<tr><td>Calculate Subnet</td> <td>256 - ${
       ClassIP[`__${prefix}`]
     } = ${256 - ClassIP[`__${prefix}`]}</td></tr>`
-    stepCalculate.innerHTML += `<tr><td>Subnet result</td> <td>255.255.255.${subnetMask}</td></tr>`
+    stepCalculate.innerHTML += `<tr><td>Subnet Mask</td> <td>255.255.255.${subnetMask}</td></tr>`
     stepCalculate.innerHTML += `<tr><td>CIDR Notation</td><td>/${prefix}</td></tr>`
     stepCalculate.innerHTML += `<tr><td>IP Class</td><td>${ipClass}</td></tr>`
     let end = window.performance.now()
@@ -150,7 +150,7 @@ function calculationMethod(ip, prefix) {
     )} (Between Network and Broadcast)</td></tr>`
     stepCalculate.innerHTML += `<tr><td>Number of Usable Hosts </td> <td>${totalIP} (Total IP) - 2 = ${totalIpUsable.toLocaleString()}</td></tr>`
     stepCalculate.innerHTML += `<tr><td>Calculate Subnet</td>  <td>256 - ${IPclass} = ${subnetMask}</td></tr>`
-    stepCalculate.innerHTML += `<tr><td>SUBNET MASK </td> <td>255.255.${subnetMask}.0</td></tr>`
+    stepCalculate.innerHTML += `<tr><td>Subnet Mask </td> <td>255.255.${subnetMask}.0</td></tr>`
     stepCalculate.innerHTML += `<tr><td>CIDR Notation</td><td>/${prefix}</td></tr>`
     stepCalculate.innerHTML += `<tr><td>IP Class</td><td>${ipClass}</td></tr>`
     let end = window.performance.now()
@@ -212,7 +212,7 @@ function calculationMethod(ip, prefix) {
     )} (Between Network and Broadcast)</td></tr>`
     stepCalculate.innerHTML += `<tr><td>Number of Usable Hosts </td> <td>${totalIP} (Total IP) - 2 = ${totalIpUsable.toLocaleString()}</td></tr>`
     stepCalculate.innerHTML += `<tr><td>Calculate Subnet</td>  <td>256 - ${IPclass} = ${subnetMask}</td></tr>`
-    stepCalculate.innerHTML += `<tr><td>SUBNET MASK </td> <td>255.${subnetMask}.0.0</td></tr>`
+    stepCalculate.innerHTML += `<tr><td>Subnet Mask </td> <td>255.${subnetMask}.0.0</td></tr>`
     stepCalculate.innerHTML += `<tr><td>CIDR Notation</td><td>/${prefix}</td></tr>`
     stepCalculate.innerHTML += `<tr><td>IP Class</td><td>${ipClass}</td></tr>`
     let end = window.performance.now()
