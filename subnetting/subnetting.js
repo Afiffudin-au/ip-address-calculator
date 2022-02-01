@@ -11,6 +11,7 @@ const regex =
 const regexBinary = '([^0-9]|^)1234([^0-9]|$)'
 const inputBox = document.querySelector('.inputBox')
 const showMethodCalculate = document.querySelector('.show-method')
+const footer = document.querySelector('.footer')
 let valueIp = ''
 let valueSubnet = ''
 let showMethod = false
@@ -120,10 +121,6 @@ function calculate(ip, prefix) {
         <td>${ip}</td>
       </tr>
       <tr>
-        <td>IP Address Binary</td>
-        <td>${ipAddrToBinary(ip)}</td>
-      </tr>
-      <tr>
         <td>Range IP</td>
         <td>${firstIPArray.join('.') + ' - ' + lastIPArray.join('.')}</td>
       </tr>
@@ -171,6 +168,7 @@ function calculate(ip, prefix) {
     calculateResult.innerHTML = results
     let end = window.performance.now()
     timeExecution.innerHTML = `Execution time: ${Math.floor(end - start)} ms`
+    footer.style.display = 'block'
   } else if (classB && afterSplit[2] !== undefined) {
     const prefixInt = parseInt(prefix)
     const imaginer = parseInt(prefixInt + 8)
@@ -202,10 +200,6 @@ function calculate(ip, prefix) {
     <tr>
       <td>IP Address</td>
       <td>${ip}</td>
-    </tr>
-    <tr>
-      <td>IP Address Binary</td>
-      <td>${ipAddrToBinary(ip)}</td>
     </tr>
     <tr>
       <td>Range IP</td>
@@ -250,6 +244,7 @@ function calculate(ip, prefix) {
     calculateResult.innerHTML = results
     let end = window.performance.now()
     timeExecution.innerHTML = `Execution time: ${Math.floor(end - start)} ms`
+    footer.style.display = 'block'
   } else if (classA && afterSplit[1] !== undefined) {
     const prefixInt = parseInt(prefix)
     const imaginer = prefixInt + 16
@@ -285,10 +280,6 @@ function calculate(ip, prefix) {
     <tr>
       <td>IP Address</td>
       <td>${ip}</td>
-    </tr>
-    <tr>
-      <td>IP Address Binary</td>
-      <td>${ipAddrToBinary(ip)}</td>
     </tr>
     <tr>
       <td>Range IP</td>
@@ -333,6 +324,7 @@ function calculate(ip, prefix) {
     calculateResult.innerHTML = results
     let end = window.performance.now()
     timeExecution.innerHTML = `Execution time: ${Math.floor(end - start)} ms`
+    footer.style.display = 'block'
   }
 }
 function validation(valueIp, valueSubnet) {

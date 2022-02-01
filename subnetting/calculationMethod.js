@@ -32,7 +32,7 @@ function calculationMethod(ip, prefix) {
     stepCalculate.innerHTML += `<tr><td>Total IP </td> <td>${
       ClassIP[`__${prefix}`]
     }</td></tr>`
-    stepCalculate.innerHTML += `<tr><td>Calculate IP</td> <td>${selectArray} / ${
+    stepCalculate.innerHTML += `<tr><td>Calculate Network Address</td> <td>${selectArray} / ${
       ClassIP[`__${prefix}`]
     } = ${Math.floor(selectArray / ClassIP[`__${prefix}`])} * ${
       ClassIP[`__${prefix}`]
@@ -46,30 +46,20 @@ function calculationMethod(ip, prefix) {
     const copyArray2 = [...afterSplit]
     copyArray[3] = firstIP
     firstIPArray = copyArray
-    stepCalculate.innerHTML += `<tr><td>IP firstResult</td> <td>${afterSplit.join(
+    stepCalculate.innerHTML += `<tr><td>Network Address</td> <td>${afterSplit.join(
       '.'
     )} 
-    => ${firstIPArray.join('.')} </td></tr>`
-    stepCalculate.innerHTML += `<tr><td>Calculate IP</td>  <td>${firstIP} + ${
+    => ${firstIPArray.join('.')} (Network Address) </td></tr>`
+    stepCalculate.innerHTML += `<tr><td>Calculate Broadcast Address</td>  <td>${firstIP} + ${
       ClassIP[`__${prefix}`]
     } - 1 = ${firstIP + ClassIP[`__${prefix}`] - 1}</td></tr>`
     copyArray2[3] = lastIP
     lastIPArray = copyArray2
-    stepCalculate.innerHTML += `<tr><td>IP lastResult <td>${afterSplit.join(
+    stepCalculate.innerHTML += `<tr><td>Broadcast Address <td>${afterSplit.join(
       '.'
     )} 
-    => ${lastIPArray.join('.')} </td></tr>`
-    stepCalculate.innerHTML += `<tr><td>Network Address (firstResult)</td><td>${firstIPArray.join(
-      '.'
-    )}</td></tr>`
-    stepCalculate.innerHTML += `<tr><td>Broadcast Address (lastResult)</td><td>${lastIPArray.join(
-      '.'
-    )}</td></tr>`
+    => ${lastIPArray.join('.')} (Broadcast Address)</td></tr>`
     subnetMask = 256 - ClassIP[`__${prefix}`]
-    stepCalculate.innerHTML += `<tr><td>Subnet calculate</td> <td>256 - ${
-      ClassIP[`__${prefix}`]
-    } = ${256 - ClassIP[`__${prefix}`]}</td></tr>`
-    stepCalculate.innerHTML += `<tr><td>Subnet result</td> <td>255.255.255.${subnetMask}</td></tr>`
     const copyArray3 = [...firstIPArray]
     copyArray3[3] = copyArray3[3] + 1
     usableHostIpRange.first = copyArray3
@@ -82,15 +72,23 @@ function calculationMethod(ip, prefix) {
     }
     stepCalculate.innerHTML += `<tr><td>RANGE IP </td> <td>${firstIPArray.join(
       '.'
-    )} - ${lastIPArray.join('.')}</td></tr>`
+    )} (Network Address) - ${lastIPArray.join(
+      '.'
+    )} (Broadcast Address)</td></tr>`
     stepCalculate.innerHTML += `<tr><td>Usable Host IP Range</td><td>${usableHostIpRange.first.join(
       '.'
-    )} - ${usableHostIpRange.last.join('.')}</td></tr>`
-    stepCalculate.innerHTML += `<tr><td>Valid Host</td> <td>${
+    )} - ${usableHostIpRange.last.join(
+      '.'
+    )} (Between Network and Broadcast)</td></tr>`
+    stepCalculate.innerHTML += `<tr><td>Number of Usable Hosts</td> <td>${
       ClassIP[`__${prefix}`]
-    } - 2 = ${
+    } (Total IP) - 2 = ${
       ClassIP[`__${prefix}`] - 2 === -1 ? '0 N/A' : ClassIP[`__${prefix}`] - 2
     }</td></tr>`
+    stepCalculate.innerHTML += `<tr><td>Calculate Subnet</td> <td>256 - ${
+      ClassIP[`__${prefix}`]
+    } = ${256 - ClassIP[`__${prefix}`]}</td></tr>`
+    stepCalculate.innerHTML += `<tr><td>Subnet result</td> <td>255.255.255.${subnetMask}</td></tr>`
     stepCalculate.innerHTML += `<tr><td>CIDR Notation</td><td>/${prefix}</td></tr>`
     stepCalculate.innerHTML += `<tr><td>IP Class</td><td>${ipClass}</td></tr>`
     let end = window.performance.now()
@@ -111,7 +109,7 @@ function calculationMethod(ip, prefix) {
     const totalIpUsable = totalIP - 2
     stepCalculate.innerHTML += `<tr><td>total IP </td> <td>  ${IPclass} * 256 = ${totalIP}</td></tr>`
     const firstIP = Math.floor(selectArray2 / IPclass) * IPclass
-    stepCalculate.innerHTML += `<tr><td>Calculate IP </td> <td> ${selectArray2} / ${IPclass} = ${Math.floor(
+    stepCalculate.innerHTML += `<tr><td>Calculate Network Address </td> <td> ${selectArray2} / ${IPclass} = ${Math.floor(
       selectArray2 / IPclass
     )} * ${IPclass} = ${Math.floor(selectArray2 / IPclass) * IPclass}</td></tr>`
     const lastIP = firstIP + IPclass - 1
@@ -120,27 +118,20 @@ function calculationMethod(ip, prefix) {
     copyArray[3] = 0
     copyArray[2] = firstIP
     firstIPArray = copyArray
-    stepCalculate.innerHTML += `<tr><td>IP firstResult</td> <td>${afterSplit.join(
+    stepCalculate.innerHTML += `<tr><td>Network Address</td> <td>${afterSplit.join(
       '.'
-    )} => ${firstIPArray.join('.')}</td></tr>`
-    stepCalculate.innerHTML += `<tr><td>Calculate IP</td> <td>${firstIP} + ${IPclass} - 1 = ${
+    )} => ${firstIPArray.join('.')} (Network Address)</td></tr>`
+    stepCalculate.innerHTML += `<tr><td>Calculate Broadcast Address</td> <td>${firstIP} + ${IPclass} - 1 = ${
       firstIP + IPclass - 1
     }</td></tr>`
     copyArray2[3] = 255
     copyArray2[2] = lastIP
     lastIPArray = copyArray2
-    stepCalculate.innerHTML += `<tr><td>IP lastResult</td> <td>${afterSplit.join(
+    stepCalculate.innerHTML += `<tr><td>Broadcast Address</td> <td>${afterSplit.join(
       '.'
-    )} => ${lastIPArray.join('.')}</td></tr>`
-    stepCalculate.innerHTML += `<tr><td>Network Address (firstResult) </td> <td>${firstIPArray.join(
-      '.'
-    )}</td></tr>`
-    stepCalculate.innerHTML += `<tr><td>Broadcast Address (lastResult)</td>  <td>${lastIPArray.join(
-      '.'
-    )}</td></tr>`
+    )} => ${lastIPArray.join('.')} (Broadcast Address)</td></tr>`
+
     subnetMask = 256 - IPclass
-    stepCalculate.innerHTML += `<tr><td>Subnet calculate</td>  <td>256 - ${IPclass} = ${subnetMask}</td></tr>`
-    stepCalculate.innerHTML += `<tr><td>SUBNET MASK </td> <td>255.255.${subnetMask}.0</td></tr>`
     const copyArray3 = [...firstIPArray]
     copyArray3[3] = copyArray3[3] + 1
     usableHostIpRange.first = copyArray3
@@ -149,11 +140,17 @@ function calculationMethod(ip, prefix) {
     usableHostIpRange.last = copyArray4
     stepCalculate.innerHTML += `<tr><td>RANGE IP </td> <td>${firstIPArray.join(
       '.'
-    )} - ${lastIPArray.join('.')}</td></tr>`
+    )} (Network Address) - ${lastIPArray.join(
+      '.'
+    )} (Broadcast Address)</td></tr>`
     stepCalculate.innerHTML += `<tr><td>Usable Host IP Range</td> <td>${usableHostIpRange.first.join(
       '.'
-    )} - ${usableHostIpRange.last.join('.')}</td></tr>`
-    stepCalculate.innerHTML += `<tr><td>Number of Usable Hosts </td> <td>${totalIP} - 2 = ${totalIpUsable.toLocaleString()}</td></tr>`
+    )} - ${usableHostIpRange.last.join(
+      '.'
+    )} (Between Network and Broadcast)</td></tr>`
+    stepCalculate.innerHTML += `<tr><td>Number of Usable Hosts </td> <td>${totalIP} (Total IP) - 2 = ${totalIpUsable.toLocaleString()}</td></tr>`
+    stepCalculate.innerHTML += `<tr><td>Calculate Subnet</td>  <td>256 - ${IPclass} = ${subnetMask}</td></tr>`
+    stepCalculate.innerHTML += `<tr><td>SUBNET MASK </td> <td>255.255.${subnetMask}.0</td></tr>`
     stepCalculate.innerHTML += `<tr><td>CIDR Notation</td><td>/${prefix}</td></tr>`
     stepCalculate.innerHTML += `<tr><td>IP Class</td><td>${ipClass}</td></tr>`
     let end = window.performance.now()
@@ -172,7 +169,7 @@ function calculationMethod(ip, prefix) {
     stepCalculate.innerHTML += `<tr><td>Imaginer</td><td>${prefixInt} + 16 = ${imaginer}</td></tr>`
     stepCalculate.innerHTML += `<tr><td>Total IP </td><td>${IPclass} * 512 = ${totalIP}</td></tr>`
     const firstIP = Math.floor(selectArray3 / IPclass) * IPclass
-    stepCalculate.innerHTML += `<tr><td>Calculate IP </td> <td> ${selectArray3} / ${IPclass} = ${Math.floor(
+    stepCalculate.innerHTML += `<tr><td>Calculate Network Address </td> <td> ${selectArray3} / ${IPclass} = ${Math.floor(
       selectArray3 / IPclass
     )} * ${IPclass} = ${Math.floor(selectArray3 / IPclass) * IPclass}</td></tr>`
     const lastIP = firstIP + IPclass - 1
@@ -182,28 +179,21 @@ function calculationMethod(ip, prefix) {
     copyArray[2] = 0
     copyArray[3] = 0
     firstIPArray = copyArray
-    stepCalculate.innerHTML += `<tr><td>IP firstResult</td> <td>${afterSplit.join(
+    stepCalculate.innerHTML += `<tr><td>Network Address</td> <td>${afterSplit.join(
       '.'
-    )} => ${firstIPArray.join('.')}</td></tr>`
-    stepCalculate.innerHTML += `<tr><td>Calculate IP</td> <td>${firstIP} + ${IPclass} - 1 = ${
+    )} => ${firstIPArray.join('.')} (Network Address)</td></tr>`
+    stepCalculate.innerHTML += `<tr><td>Calculate Broadcast Address</td> <td>${firstIP} + ${IPclass} - 1 = ${
       firstIP + IPclass - 1
     }</td></tr>`
     copyArray2[1] = lastIP
     copyArray2[2] = 255
     copyArray2[3] = 255
     lastIPArray = copyArray2
-    stepCalculate.innerHTML += `<tr><td>IP lastResult</td> <td>${afterSplit.join(
+    stepCalculate.innerHTML += `<tr><td>Broadcast Address</td> <td>${afterSplit.join(
       '.'
-    )} => ${lastIPArray.join('.')}</td></tr>`
-    stepCalculate.innerHTML += `<tr><td>Network Address (firstResult) </td> <td>${firstIPArray.join(
-      '.'
-    )}</td></tr>`
-    stepCalculate.innerHTML += `<tr><td>Broadcast Address (lastResult)</td>  <td>${lastIPArray.join(
-      '.'
-    )}</td></tr>`
+    )} => ${lastIPArray.join('.')} (Broadcast Address)</td></tr>`
+
     subnetMask = 256 - IPclass
-    stepCalculate.innerHTML += `<tr><td>Subnet calculate</td>  <td>256 - ${IPclass} = ${subnetMask}</td></tr>`
-    stepCalculate.innerHTML += `<tr><td>SUBNET MASK </td> <td>255.${subnetMask}.0.0</td></tr>`
     const copyArray3 = [...firstIPArray]
     copyArray3[3] = copyArray3[3] + 1
     usableHostIpRange.first = copyArray3
@@ -212,11 +202,17 @@ function calculationMethod(ip, prefix) {
     usableHostIpRange.last = copyArray4
     stepCalculate.innerHTML += `<tr><td>RANGE IP </td> <td>${firstIPArray.join(
       '.'
-    )} - ${lastIPArray.join('.')}</td></tr>`
+    )} (Network Address) - ${lastIPArray.join(
+      '.'
+    )} (Broadcast Address)</td></tr>`
     stepCalculate.innerHTML += `<tr><td>Usable Host IP Range</td> <td>${usableHostIpRange.first.join(
       '.'
-    )} - ${usableHostIpRange.last.join('.')}</td></tr>`
-    stepCalculate.innerHTML += `<tr><td>Number of Usable Hosts </td> <td>${totalIP} - 2 = ${totalIpUsable.toLocaleString()}</td></tr>`
+    )} - ${usableHostIpRange.last.join(
+      '.'
+    )} (Between Network and Broadcast)</td></tr>`
+    stepCalculate.innerHTML += `<tr><td>Number of Usable Hosts </td> <td>${totalIP} (Total IP) - 2 = ${totalIpUsable.toLocaleString()}</td></tr>`
+    stepCalculate.innerHTML += `<tr><td>Calculate Subnet</td>  <td>256 - ${IPclass} = ${subnetMask}</td></tr>`
+    stepCalculate.innerHTML += `<tr><td>SUBNET MASK </td> <td>255.${subnetMask}.0.0</td></tr>`
     stepCalculate.innerHTML += `<tr><td>CIDR Notation</td><td>/${prefix}</td></tr>`
     stepCalculate.innerHTML += `<tr><td>IP Class</td><td>${ipClass}</td></tr>`
     let end = window.performance.now()
