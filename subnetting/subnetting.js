@@ -362,7 +362,7 @@ function handleInputSubnet(e) {
 }
 function handleCalculate() {
   if (validation(valueIp, valueSubnet) === 'FAILURE') {
-    alert('Invalid IP Address')
+    alert('Invalid IP Address / Not Support Prefix')
     return
   }
   if (valueSubnet < 8 || valueSubnet > 32) {
