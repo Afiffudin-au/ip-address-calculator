@@ -341,6 +341,9 @@ function validation(valueIp, valueSubnet) {
   if (afterSplit.length === 2) {
     return 'FAILURE'
   }
+  if (valueSubnet.toString().includes('.')) {
+    return 'FAILURE'
+  }
   if (valueIp.match(regex) === null || valueSubnet === '') {
     return 'FAILURE'
   } else {
@@ -365,10 +368,6 @@ function handleCalculate() {
   if (validation(valueIp, valueSubnet) === 'FAILURE') {
     alert('Invalid IP Address / Not Support Prefix')
     return
-  }
-
-  if (valueSubnet.toString().includes('.')) {
-    alert('Subnet does not require (dot)')
   }
   if (valueSubnet < 8 || valueSubnet > 32) {
     alert('Not Support Prefix : ' + valueSubnet)
