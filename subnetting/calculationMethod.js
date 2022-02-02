@@ -101,13 +101,13 @@ function calculationMethod(ip, prefix) {
     } IP</p>`
     beforeCalculations.innerHTML += `<p>3rd Octet = ${afterSplit[2]}</p>`
     beforeCalculations.innerHTML += `<p>Solutions :</p> `
-    stepCalculate.innerHTML += `<tr><td>imaginer</td><td>${prefix} + 8 = ${
+    stepCalculate.innerHTML += `<tr><td>imaginer</td><td>Prefix /${prefix} + 8 = /${
       prefixInt + 8
-    }</td></tr>`
+    } = ${ClassIP[`__${imaginer}`]} IP</td></tr>`
     const IPclass = ClassIP[`__${imaginer}`]
     const totalIP = IPclass * 256
     const totalIpUsable = totalIP - 2
-    stepCalculate.innerHTML += `<tr><td>total IP </td> <td>  ${IPclass} * 256 = ${totalIP}</td></tr>`
+    stepCalculate.innerHTML += `<tr><td>total IP </td> <td>  ${IPclass} * 256 (Default Value) = ${totalIP}</td></tr>`
     const firstIP = Math.floor(selectArray2 / IPclass) * IPclass
     stepCalculate.innerHTML += `<tr><td>Calculate Network Address </td> <td> ${selectArray2} / ${IPclass} = ${Math.floor(
       selectArray2 / IPclass
@@ -166,8 +166,10 @@ function calculationMethod(ip, prefix) {
     } IP</p>`
     beforeCalculations.innerHTML += `<p>2nd Octet = ${afterSplit[1]}</p>`
     beforeCalculations.innerHTML += `<p>Solutions :</p> `
-    stepCalculate.innerHTML += `<tr><td>Imaginer</td><td>${prefixInt} + 16 = ${imaginer}</td></tr>`
-    stepCalculate.innerHTML += `<tr><td>Total IP </td><td>${IPclass} * 512 = ${totalIP}</td></tr>`
+    stepCalculate.innerHTML += `<tr><td>Imaginer</td><td>Prefix /${prefixInt} + 16 = /${imaginer} = ${
+      ClassIP[`__${imaginer}`]
+    }</td></tr>`
+    stepCalculate.innerHTML += `<tr><td>Total IP </td><td>${IPclass} * 512 (Default Value) = ${totalIP}</td></tr>`
     const firstIP = Math.floor(selectArray3 / IPclass) * IPclass
     stepCalculate.innerHTML += `<tr><td>Calculate Network Address </td> <td> ${selectArray3} / ${IPclass} = ${Math.floor(
       selectArray3 / IPclass
