@@ -85,6 +85,7 @@ table {
   font-weight: 500;
   table-layout: fixed;
   overflow-wrap: break-word;
+  margin-bottom: 15px;
 }
 .stepCalculate {
   margin-bottom: 15px;
