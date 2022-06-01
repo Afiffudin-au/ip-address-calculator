@@ -91,8 +91,6 @@ function calculationMethod(ip, prefix) {
     stepCalculate.innerHTML += `<tr><td>Subnet Mask</td> <td>255.255.255.${subnetMask}</td></tr>`
     stepCalculate.innerHTML += `<tr><td>CIDR Notation</td><td>/${prefix}</td></tr>`
     stepCalculate.innerHTML += `<tr><td>IP Class</td><td>${ipClass}</td></tr>`
-    let end = window.performance.now()
-    timeExecution.innerHTML = `Execution time: ${Math.floor(end - start)} ms`
   } else if (classB && afterSplit[2] !== undefined) {
     const prefixInt = parseInt(prefix)
     const imaginer = parseInt(prefixInt + 8)
@@ -153,8 +151,6 @@ function calculationMethod(ip, prefix) {
     stepCalculate.innerHTML += `<tr><td>Subnet Mask </td> <td>255.255.${subnetMask}.0</td></tr>`
     stepCalculate.innerHTML += `<tr><td>CIDR Notation</td><td>/${prefix}</td></tr>`
     stepCalculate.innerHTML += `<tr><td>IP Class</td><td>${ipClass}</td></tr>`
-    let end = window.performance.now()
-    timeExecution.innerHTML = `Execution time: ${Math.floor(end - start)} ms`
   } else if (classA && afterSplit[1] !== undefined) {
     const prefixInt = parseInt(prefix)
     const imaginer = prefixInt + 16
@@ -217,7 +213,5 @@ function calculationMethod(ip, prefix) {
     stepCalculate.innerHTML += `<tr><td>Subnet Mask </td> <td>255.${subnetMask}.0.0</td></tr>`
     stepCalculate.innerHTML += `<tr><td>CIDR Notation</td><td>/${prefix}</td></tr>`
     stepCalculate.innerHTML += `<tr><td>IP Class</td><td>${ipClass}</td></tr>`
-    let end = window.performance.now()
-    timeExecution.innerHTML = `Execution time: ${Math.floor(end - start)} ms`
   }
 }
