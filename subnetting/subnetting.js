@@ -136,6 +136,7 @@ function calculate(ip, prefix) {
     subnettingResults.ipClassType = ipClassType
     subnettingResults.ipType = typeOfIp
     showResults(subnettingResults)
+    footer.style.display = 'block'
     //block subnet
     if (subnetMask === 0 || parseInt(prefix) === 24 || parseInt(prefix) >= 31) {
       return
@@ -172,9 +173,6 @@ function calculate(ip, prefix) {
     subnettingTables.ip =
       ip.split('.')[0] + '.' + ip.split('.')[1] + '.' + ip.split('.')[2] + '.*'
     showSubnetTables(subnettingTables)
-    let end = window.performance.now()
-    timeExecution.innerHTML = `Execution time: ${Math.floor(end - start)} ms`
-    footer.style.display = 'block'
   } else if (classB && afterSplit[2] !== undefined) {
     const prefixInt = parseInt(prefix)
     const imaginer = parseInt(prefixInt + 8)
@@ -215,7 +213,7 @@ function calculate(ip, prefix) {
     subnettingResults.ipClassType = ipClassType
     subnettingResults.ipType = typeOfIp
     showResults(subnettingResults)
-
+    footer.style.display = 'block'
     //block subnet
     if (subnetMask === 0 || parseInt(prefix) === 16) return
     const blockSubnet = IPclass
@@ -252,9 +250,6 @@ function calculate(ip, prefix) {
     subnettingTables.prefix = prefix
     subnettingTables.ip = ip.split('.')[0] + '.' + ip.split('.')[1] + '.*.*'
     showSubnetTables(subnettingTables)
-    let end = window.performance.now()
-    timeExecution.innerHTML = `Execution time: ${Math.floor(end - start)} ms`
-    footer.style.display = 'block'
   } else if (classA && afterSplit[1] !== undefined) {
     const prefixInt = parseInt(prefix)
     const imaginer = prefixInt + 16
@@ -297,6 +292,7 @@ function calculate(ip, prefix) {
     subnettingResults.ipClassType = ipClassType
     subnettingResults.ipType = typeOfIp
     showResults(subnettingResults)
+    footer.style.display = 'block'
     if (subnetMask === 0 || parseInt(prefix) === 8) return
     const blockSubnet = IPclass
     let nextSubnets = []
@@ -332,9 +328,6 @@ function calculate(ip, prefix) {
     subnettingTables.prefix = prefix
     subnettingTables.ip = ip.split('.')[0] + '.*.*.*'
     showSubnetTables(subnettingTables)
-    let end = window.performance.now()
-    timeExecution.innerHTML = `Execution time: ${Math.floor(end - start)} ms`
-    footer.style.display = 'block'
   }
 }
 function showResults(subnettingResults) {
